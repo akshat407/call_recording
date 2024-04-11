@@ -1,12 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:call_detector/call_detector.dart';
+import 'package:flutter_background_service/flutter_background_service.dart';
 
+
+import 'call/call_detection.dart';
 import 'database_helper.dart';
 
-void main() {
+
+  void main() {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await initializeService();
+  // await FlutterBackgroundService().startService();
+  // // Starting service in foreground mode
+  // FlutterBackgroundService().invoke("setAsForeground");
+  // Future.delayed(const Duration(seconds: 7), () {
+  //   // Method to pass api data to background service as they use isolates so it is not possible to directly pass data in that function
+  //   FlutterBackgroundService().invoke("listenIncoming");
+  // });
+  // startBgCaller();
   runApp(MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   @override
@@ -38,11 +54,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('SQFlite Demo'),
+        title: const Text('SQFlite Demo'),
       ),
       body: Center(
         child: _contacts.isEmpty
-            ? CircularProgressIndicator() // Show loading indicator while data is being fetched
+            ? const CircularProgressIndicator() // Show loading indicator while data is being fetched
             : ListView.builder(
                 itemCount: _contacts.length,
                 itemBuilder: (context, index) {
@@ -59,14 +75,17 @@ class _MyHomePageState extends State<MyHomePage> {
                       onPressed: (){
                         _deleteContact(contact[DatabaseHelper.columnId]);
                       }, 
-                      icon: Icon(Icons.delete),
+                      icon: const Icon(Icons.delete),
                       )
                   
                   );
                 },
               ),
       ),
-    );
+      floatingActionButton: FloatingActionButton(onPressed: ()async{Navigator.of(context).push(MaterialPageRoute(builder: (context) => Example()));
+}),
+ )
+      ;
   }
 
   // Method to insert dummy data into the database
