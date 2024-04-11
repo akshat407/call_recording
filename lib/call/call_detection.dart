@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:phone_state/phone_state.dart';
 
+
+  PhoneState status = PhoneState.nothing();
+
 // main() {
 //   runApp(
 //     const MaterialApp(
@@ -20,7 +23,7 @@ class Example extends StatefulWidget {
 }
 
 class _ExampleState extends State<Example> {
-  PhoneState status = PhoneState.nothing();
+
   bool granted = false;
 
   Future<bool> requestPermission() async {
