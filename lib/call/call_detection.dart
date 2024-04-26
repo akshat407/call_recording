@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:phone_state/phone_state.dart';
+import 'package:system_alert_window/system_alert_window.dart';
 
 
   PhoneState status = PhoneState.nothing();
@@ -43,7 +44,12 @@ class _ExampleState extends State<Example> {
   void initState() {
     super.initState();
     if (Platform.isIOS) setStream();
+    // getPermission();
+    // SystemAlertWindow.registerOnClickListener(callBack);
   }
+  // getPermission() async {
+  //   await SystemAlertWindow.checkPermissions;
+  //   }
 
   void setStream() {
     PhoneState.stream.listen((event) {
@@ -117,4 +123,10 @@ class _ExampleState extends State<Example> {
       PhoneStateStatus.CALL_STARTED => Colors.orange,
     };
   }
+  // void callBack(tag) {
+  // print(tag);
+  // if (tag == "close") {
+  //   SystemAlertWindow.closeSystemWindow();
+  // }
+  // }
 }

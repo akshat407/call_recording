@@ -5,6 +5,7 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:call_detector/call_detector.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
+import 'package:system_alert_window/system_alert_window.dart';
 
 
 import 'call/call_detection.dart';
@@ -28,6 +29,20 @@ import 'database_helper.dart';
 
 class MyApp extends StatelessWidget {
   @override
+
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   getPermission();
+  //   SystemAlertWindow.registerOnClickListener(callBack);
+  // }
+
+  // getPermission() async {
+  //   await SystemAlertWindow.checkPermissions;
+  //   }
+
+
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'SQFlite Demo',

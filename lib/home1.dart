@@ -4,6 +4,7 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:call_detector/call_detector.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
+import 'package:system_alert_window/system_alert_window.dart';
 
 
 import 'call/call_detection.dart';
@@ -19,6 +20,18 @@ class home1 extends StatefulWidget {
 
 class _home1State extends State<home1> {
    String _name = '';
+   @override
+  void initState() {
+    super.initState();
+    
+    getPermission();
+  }
+
+  getPermission() async {
+    await SystemAlertWindow.checkPermissions;
+    }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,6 +49,12 @@ class _home1State extends State<home1> {
             ElevatedButton(
             onPressed: (){
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => Example()));
+              SystemAlertWindow.showSystemWindow(
+                gravity: SystemWindowGravity.CENTER,
+                notificationTitle: "bghsjdbs" ,prefMode: SystemWindowPrefMode.OVERLAY,
+                notificationBody: "dhgusd"
+                
+              );
             }, 
             child: Text("call detection")),
               ElevatedButton(
