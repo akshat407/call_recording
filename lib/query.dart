@@ -99,6 +99,7 @@ class _QueryState extends State<Query> {
 
    Future<String> checkPhoneNumber(String phoneNumber) async {
     // Get the path to the database file
+    print("Hello");
     String path = join(await getDatabasesPath(), 'contacts.db');
 
     // Open the database
