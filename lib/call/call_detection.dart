@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:call_recording/call/overlay.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:phone_state/phone_state.dart';
@@ -75,6 +76,7 @@ class _ExampleState extends State<Example> {
               MaterialButton(
                 onPressed: !granted
                     ? () async {
+                      overlay();
                         bool temp = await requestPermission();
                         setState(() {
                           granted = temp;
@@ -82,6 +84,7 @@ class _ExampleState extends State<Example> {
                             setStream();
                           }
                         });
+                        
                       }
                     : null,
                 child: const Text('Request permission of Phone'),

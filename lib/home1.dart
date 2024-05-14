@@ -1,3 +1,4 @@
+import 'package:call_recording/call/overlay.dart';
 import 'package:call_recording/query.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
@@ -20,16 +21,16 @@ class home1 extends StatefulWidget {
 
 class _home1State extends State<home1> {
    String _name = '';
-   @override
-  void initState() {
-    super.initState();
+  //  @override
+  // void initState() {
+  //   super.initState();
     
-    getPermission();
-  }
+  //   _requestPermissions();
+  // }
 
-  getPermission() async {
-    await SystemAlertWindow.checkPermissions;
-    }
+  // Future<void> _requestPermissions() async {
+  //   await SystemAlertWindow.requestPermissions(prefMode: SystemWindowPrefMode.OVERLAY);
+  // }
 
 
   @override
@@ -49,18 +50,20 @@ class _home1State extends State<home1> {
             ElevatedButton(
             onPressed: (){
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => Example()));
-              SystemAlertWindow.showSystemWindow(
-                gravity: SystemWindowGravity.CENTER,
-                notificationTitle: "bghsjdbs" ,prefMode: SystemWindowPrefMode.OVERLAY,
-                notificationBody: "dhgusd"
+              // SystemAlertWindow.showSystemWindow(
+              //   gravity: SystemWindowGravity.CENTER,
+              //   notificationTitle: "bghsjdbs" ,
+              //   notificationBody: "dhgusd"
                 
-              );
+              // );
             }, 
             child: Text("call detection")),
               ElevatedButton(
               onPressed: () async {
+                
                 String phoneNumber = {status.number}.toString();
                 String name = await checkPhoneNumber(phoneNumber);
+                
                 setState(() {
                   _name = name;
                 });
